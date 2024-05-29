@@ -1,0 +1,24 @@
+services:
+  sidecar:
+    image: "jefvda/php-composer"
+    working_dir: /app
+    volumes:
+      - ./vendor:/app/vendor
+      - ./composer.json:/app/composer.json
+      - ./phpunit.xml.dist:/app/phpunit.xml.dist
+    command: |
+      sh -c '
+        printf "Installing dependencies"
+        composer install
+        composer update --prefer-lowest
+      
+        printf "Changing permissions on /vendor \\n"
+        chown -R 1000:1000 /app/vendor
+      '
+  composer:
+    image: "jefvda/php-composer"
+    user: 1000:1000
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /etc/passwd:/etc/passwd:ro

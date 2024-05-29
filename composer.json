@@ -1,0 +1,31 @@
+{
+    "name": "jefvda/initial-php-package",
+    "description": "Initial state to build a php-package from",
+    "version": "0.0.0",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "JefvdA\\InitialPhpPackage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JefvdA\\InitialPhpPackage\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JefvdA"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "7.0.* | 7.1.* | 7.2.* | 7.3.* | 7.4.* | 7.5.* | 7.6.* | 7.7.* | 7.8.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "11.1.3",
+        "friendsofphp/php-cs-fixer": "3.58.0",
+        "phpstan/phpstan": "1.11.2",
+        "phpstan/phpstan-phpunit": "1.4.0",
+        "fakerphp/faker": "1.23.1"
+    }
+}

@@ -1,0 +1,20 @@
+parameters:
+	level: max
+	tmpDir: .cache/.phpstan.cache
+	paths:
+		- .
+	excludePaths:
+		analyseAndScan:
+			- .cache
+			- var
+			- vendor
+	parallel:
+		maximumNumberOfProcesses: 4
+	treatPhpDocTypesAsCertain: false
+	checkTooWideReturnTypesInProtectedAndPublicMethods: true
+	checkUninitializedProperties: true
+	checkDynamicProperties: true
+	rememberPossiblyImpureFunctionValues: false
+	checkImplicitMixed: true
+	checkBenevolentUnionTypes: true
+	reportWrongPhpDocTypeInVarTag: true
