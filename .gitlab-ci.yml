@@ -1,0 +1,33 @@
+stages:
+  - test
+  - qa
+
+cache:
+  key: composer
+  paths:
+    - vendor/
+    - composer.lock
+
+test:
+  stage: test
+  image: jefvda/php-composer
+  before_script:
+    - composer install --prefer-dist --no-progress --no-suggest
+  script:
+    - ./vendor/bin/phpunit
+
+php-cs-fixer:
+  stage: qa
+  image: jefvda/php-composer
+  before_script:
+    - composer install --prefer-dist --no-progress --no-suggest
+  script:
+    - ./vendor/bin/php-cs-fixer check --diff
+
+phpstan:
+  stage: qa
+  image: jefvda/php-composer
+  before_script:
+    - composer install --prefer-dist --no-progress --no-suggest
+  script:
+    - ./vendor/bin/phpstan
