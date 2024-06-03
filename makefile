@@ -13,6 +13,9 @@ bash: ## Open bash in new testing container
 fix: ## Run php-cs-fixer on all files
 	@docker compose run --rm composer vendor/bin/php-cs-fixer fix
 
+dry-fix: ## Run php-cs-fixer on all files but only show changes, don't go through with them
+	@docker compose run --rm composer vendor/bin/php-cs-fixer check --diff
+
 phpstan: ## Run phpstan level 9 on all files
 	@docker compose run --rm composer vendor/bin/phpstan analyse src tests -l 9
 
