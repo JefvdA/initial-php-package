@@ -28,6 +28,7 @@ $rules = [
         ],
         'skip_unlisted_annotations' => true,
     ],
+    'no_unused_imports' => true,
 ];
 
 $finder = Finder::create()
