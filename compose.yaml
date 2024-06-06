@@ -1,6 +1,6 @@
 services:
   sidecar:
-    image: "jefvda/php-composer"
+    build: .
     working_dir: /app
     volumes:
       - ./vendor:/app/vendor
@@ -16,7 +16,7 @@ services:
         chown -R 1000:1000 /app/vendor
       '
   composer:
-    image: "jefvda/php-composer"
+    build: .
     user: 1000:1000
     working_dir: /app
     volumes:
