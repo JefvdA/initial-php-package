@@ -16,6 +16,14 @@ test:
   script:
     - ./vendor/bin/phpunit
 
+normalize-composer:
+  stage: qa
+  image: jefvda/php-composer
+  before_script:
+    - composer install --prefer-dist --no-progress --no-suggest
+  script:
+    - composer normalize --dry-run
+
 php-cs-fixer:
   stage: qa
   image: jefvda/php-composer

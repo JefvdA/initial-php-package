@@ -7,6 +7,12 @@ help: ## Show this help menu
 build: ## Build the docker container
 	@docker compose build
 
+normalize-composer: ## Normalizes the composer.json file
+	@docker compose run --rm composer composer normalize
+
+dry-normalize-composer: ## Normalizes the composer.json file
+	@docker compose run --rm composer composer normalize --dry-run
+
 init: ## Initialize by installing dependencies
 	@docker compose run --rm sidecar
 
