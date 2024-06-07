@@ -6,7 +6,6 @@ cache:
   key: composer
   paths:
     - vendor/
-    - composer.lock
 
 test:
   stage: test
