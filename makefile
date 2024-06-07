@@ -7,10 +7,11 @@ endif
 .DEFAULT_GOAL := help
 
 USE_DOCKER ?= true
+DOCKER_COMPOSE ?= docker compose
 
 ifeq ($(USE_DOCKER), true)
-    PHP = docker compose run --rm composer php
-    COMPOSER = docker compose run --rm composer composer
+    PHP = $(DOCKER_COMPOSE) run --rm composer php
+    COMPOSER = $(DOCKER_COMPOSE) run --rm composer composer
 else
     PHP = php
     COMPOSER = composer
@@ -25,7 +26,7 @@ help: ## Show this help menu
 ###
 .PHONY: build
 build: ## Build the docker container
-	@docker compose build
+	@$(DOCKER_COMPOSE) build
 
 .PHONY: bash
 bash: ## Open bash in new testing container
@@ -37,7 +38,7 @@ bash: ## Open bash in new testing container
 .PHONY: init
 init: ## Initialize by installing dependencies
 ifeq ($(USE_DOCKER), true)
-	@docker compose run --rm sidecar
+	@$(DOCKER_COMPOSE) run --rm sidecar
 else
 	@$(COMPOSER) install
 endif
