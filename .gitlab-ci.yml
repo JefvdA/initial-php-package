@@ -2,10 +2,14 @@ stages:
   - test
   - qa
 
+before_script:
+  - export CACHE_KEY=$(sh scripts/generate_cache_key.sh)
+
 cache:
-  key: composer
+  key: $CACHE_KEY
   paths:
     - vendor/
+    - composer.lock
 
 test:
   stage: test
