@@ -30,7 +30,7 @@ build: ## Build the docker container
 
 .PHONY: bash
 bash: ## Open bash in new testing container
-	@$(PHP) bash
+	@$(DOCKER_COMPOSE) run --rm composer bash
 
 ###
 ## PHP
